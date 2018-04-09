@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http:mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+	<mapper namespace="com.hzyc.registerSystem.mapper.TeacherMapper">
+		
+		<select id="getPasswordByCode" parameterType="String" resultType="String">
+			SELECT password FROM users WHERE CODE =#{code}
+		</select>
+		
+		<select id="queryTeacherMessageByID" parameterType="String" resultType="Users">
+		 select * from users where id=#{id}
+		</select>  
+		<update id="updateTeacherMessageByID" parameterType="Users">
+		 update users set password=#{password},name=#{name},phone=#{phone},registerTime=#{registerTime},question=#{question},answer=#{answer},picture=#{picture},idNumber=#{idNumber},email=#{email},address=#{address},school=#{school},major=#{major} ,class_id=#{class_id} where id=#{id}
+		</update>  
+		
+	</mapper>

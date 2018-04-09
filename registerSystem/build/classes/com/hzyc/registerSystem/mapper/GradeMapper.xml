@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzyc.registerSystem.mapper.GradeMapper" >
+  <resultMap id="BaseResultMap" type="com.hzyc.registerSystem.po.Grade" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="class_data" property="classData" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+     <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap type="com.hzyc.registerSystem.po.Grade" id="selGradeAndUsers">
+  		 <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+	    <result column="class_data" property="classData" jdbcType="VARCHAR" />
+	    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+	    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+	    <result column="state" property="state" jdbcType="VARCHAR" />
+	     <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+  			<collection property="uList" ofType="com.hzyc.registerSystem.po.Users">
+			    <result column="code" property="code" jdbcType="VARCHAR" />
+			    <result column="password" property="password" jdbcType="VARCHAR" />
+			    <result column="name" property="name" jdbcType="VARCHAR" />
+			    <result column="phone" property="phone" jdbcType="VARCHAR" />
+			    <result column="register_time" property="registerTime" jdbcType="VARCHAR" />
+			    <result column="question" property="question" jdbcType="VARCHAR" />
+			    <result column="answer" property="answer" jdbcType="VARCHAR" />
+			    <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+			    <result column="email" property="email" jdbcType="VARCHAR" />
+			    <result column="address" property="address" jdbcType="VARCHAR" />
+			    <result column="school" property="school" jdbcType="VARCHAR" />
+			    <result column="major" property="major" jdbcType="VARCHAR" />
+			    <result column="mac" property="mac" jdbcType="VARCHAR" />
+			    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+			    <result column="remark" property="remark" jdbcType="VARCHAR" />
+			    <result column="picture_name" property="pictureName" jdbcType="VARCHAR" />
+  			</collection>
+   </resultMap>
+  <sql id="Base_Column_List" >
+    grade.id, grade.class_id, class_data, user_id, end_time,course_name
+  </sql>
+  
+    <sql id="Base_Column_List_Grade" >
+    grade.id, grade.class_id, class_data, user_id, end_time,course_name,
+  </sql>
+  <sql id="Base_Column_List_Users" >
+    code, password, name, phone, register_time, question, answer, id_number, email, 
+    address, school, major, mac, remark, picture_name
+  </sql>
+
+ 
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from grade
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selGradeAndUsersByClassId" resultMap="selGradeAndUsers" parameterType="com.hzyc.registerSystem.po.Users">
+  	select 
+  	<include refid="Base_Column_List"></include>,
+  	<include refid="Base_Column_List_Users"></include>
+  	
+  	 from users,grade where grade.user_id = #{id} and grade.class_id = #{classId}
+  
+  </select>
+  <select id="selGradeAndUsersByCount" resultMap="selGradeAndUsers" parameterType="com.hzyc.registerSystem.po.Grade">
+  	SELECT COUNT(*) FROM users,grade WHERE grade.class_id = users.class_id AND grade.class_id = #{classId}
+  </select>
+  <select id="selGradeByClassId" resultMap="BaseResultMap" parameterType="com.hzyc.registerSystem.po.Grade">
+	select * from grade where class_id = #{classId}
+	</select>
+ 
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from grade
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hzyc.registerSystem.po.Grade" >
+    insert into grade (id, class_id, class_data, 
+      user_id, course_name, state
+      )
+    values (#{id,jdbcType=INTEGER}, #{classId,jdbcType=VARCHAR}, #{classData,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzyc.registerSystem.po.Grade" >
+    insert into grade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="classData != null" >
+        class_data,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="classData != null" >
+        #{classData,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzyc.registerSystem.po.Grade" >
+    update grade
+    <set >
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="classData != null" >
+        class_data = #{classData,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzyc.registerSystem.po.Grade" >
+    update grade
+      set class_id = #{classId,jdbcType=VARCHAR},
+      class_data = #{classData,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <select id="judgment" resultMap="BaseResultMap" parameterType="String">
+  	select * from grade where class_id = #{0}
+  </select>
+  
+  <select id="statsTWK" resultMap="BaseResultMap" parameterType="String">
+    SELECT	users.code,users.name,grade.class_id,grade.class_data,grade.course_name,grade.state FROM users,grade WHERE users.code = #{0} AND users.id = grade.user_id
+  </select>
+  <select id="statsATWK" resultMap="BaseResultMap" parameterType="String">
+    SELECT	users.code,users.name,grade.class_id,grade.class_data,grade.course_name,grade.state FROM users,grade WHERE users.id = grade.user_id AND grade.class_id != '项目组'
+  </select>
+	<select id="selIdByGrade" resultMap="BaseResultMap" parameterType="com.hzyc.registerSystem.po.Grade">
+		select * from grade where class_id = #{classId}
+	</select>
+	
+	<update id="updateGradeForGrade0" parameterType="com.hzyc.registerSystem.po.Grade">
+		update grade 
+		set class_id=#{classId}
+		where  class_data=#{classData} and
+		course_name=#{courseName} and
+		end_time=#{endTime} 
+	</update>
+	<update id="updateGradeForGrade1" parameterType="com.hzyc.registerSystem.po.Grade">
+		update grade 
+		set class_data=#{classData}
+		where  class_id=#{classId} and
+		course_name=#{courseName} and
+		end_time=#{endTime} 
+	</update>
+	<update id="updateGradeForGrade2" parameterType="com.hzyc.registerSystem.po.Grade">
+		update grade 
+		set end_time=#{endTime}
+		where  class_data=#{classData} and
+		class_id=#{classId} and
+		course_name=#{courseName}
+	</update>
+	<update id="updateGradeForGrade3" parameterType="com.hzyc.registerSystem.po.Grade">
+		update grade 
+		set course_name=#{courseName} 
+		where  class_data=#{classData} and
+		course_name=#{courseName} and
+		end_time=#{endTime}
+	</update>
+	<select id="min" resultType="String">
+	     SELECT class_id FROM grade ORDER BY id DESC LIMIT 0,1;
+	</select>
+	
+   <select id="yesOrNo" resultType="String">
+      SELECT end_time FROM grade WHERE state='1' ORDER BY end_time LIMIT 0,1  
+   </select>
+   <update id="updateState" parameterType="com.hzyc.registerSystem.po.Grade" >
+      UPDATE grade SET state = '0'  WHERE end_time = #{endTime}
+   </update>
+   <select id="selectGradeByTwo" parameterType="String" resultMap="BaseResultMap">
+	  select * from grade 
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+		  <if test="classId != '请选择' and classId != null ">
+            class_id = #{classId,jdbcType=VARCHAR}
+          </if>
+          <if test="courseName != '请选择' " >
+            and course_name = #{courseName,jdbcType=VARCHAR}
+          </if>
+		</trim>
+	</select>
+   <select id="selectGradeByTwo2" parameterType="com.hzyc.registerSystem.po.Grade" resultMap="selGradeAndUsers">
+	  select 
+	    <include refid="Base_Column_List_Grade" />
+		<include refid="Base_Column_List_Users" />	
+	   from grade,users where grade.class_id = users.class_id and user_id = #{userId}
+	
+		<if test="classId!=null and classId !='' and classId != '请选择'">
+		 and grade.class_id = #{classId} 
+		</if>
+		<if test="courseName!=null and courseName!='' and courseName!='请选择'">
+		 and grade.course_name = #{courseName}
+		</if>
+		
+	</select>
+	<select id="selectSize0" parameterType="com.hzyc.registerSystem.po.Grade" resultMap="BaseResultMap">
+	  select   *  from  grade 
+	    <trim  prefix="where" prefixOverrides="AND|OR">
+	    <if test="classId!=null and classId !='' and classId != '请选择'">
+		 and class_id = #{classId} 
+		</if>
+		<if test="courseName!=null and courseName!='' and courseName!='请选择'">
+		 and course_name = #{courseName}
+		</if>
+	    </trim>
+	</select>
+</mapper>

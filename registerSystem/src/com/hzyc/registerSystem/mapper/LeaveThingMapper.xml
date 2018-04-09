@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzyc.registerSystem.mapper.LeaveThingMapper" >
+  <resultMap id="BaseResultMap" type="com.hzyc.registerSystem.po.LeaveThing" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, time, type, reason
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from leave_thing
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from leave_thing
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hzyc.registerSystem.po.LeaveThing" >
+    insert into leave_thing (id, name, time, 
+      type, reason)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzyc.registerSystem.po.LeaveThing" >
+    insert into leave_thing
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzyc.registerSystem.po.LeaveThing" >
+    update leave_thing
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzyc.registerSystem.po.LeaveThing" >
+    update leave_thing
+    set name = #{name,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      reason = #{reason,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <insert id="insertLeaveStu" parameterType="LeaveThing">
+  	insert into leave_thing (user_role_id,name,time,type,reason) values ('2',#{name},#{time},#{type},#{reason})
+  </insert>
+  <insert id="insertLeaveStuForPro" parameterType="LeaveThing">
+  	insert into leave_thing (user_role_id,name,time,type,reason) values ('3',#{name},#{time},#{type},#{reason})
+  </insert>
+  <select id="searchLeave" resultType="LeaveThing">
+  	select * from leave_thing where user_role_id = '2'
+  </select>
+  <select id="searchLeaveForPro" resultType="LeaveThing">
+  	select * from leave_thing where user_role_id = '3'
+  </select>
+  <update id="updateLeave" parameterType="LeaveThing">
+  	update leave_thing set name=#{name},time=#{time},type=#{type},reason=#{reason} where id=#{id}
+  </update>
+  <delete id="deleteLeaveById" parameterType="String">
+  	delete from leave_thing where id=#{id}
+  </delete>
+  <select id="selectLeaveById" parameterType="String" resultType="LeaveThing">
+  	select * from leave_thing where id=#{id}
+  </select>
+</mapper>

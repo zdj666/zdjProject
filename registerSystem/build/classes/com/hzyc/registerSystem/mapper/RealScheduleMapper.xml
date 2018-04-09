@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzyc.registerSystem.mapper.RealScheduleMapper" >
+  <resultMap id="BaseResultMap" type="com.hzyc.registerSystem.po.RealSchedule" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="classroom" property="classroom" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="grade_id" property="gradeId" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, classroom, user_id, time, grade_id, date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from real_schedule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from real_schedule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hzyc.registerSystem.po.RealSchedule" >
+    insert into real_schedule (id, classroom, user_id, 
+      time, grade_id, date
+      )
+    values (#{id,jdbcType=INTEGER}, #{classroom,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{time,jdbcType=VARCHAR}, #{gradeId,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzyc.registerSystem.po.RealSchedule" >
+    insert into real_schedule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="classroom != null" >
+        classroom,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="gradeId != null" >
+        grade_id,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="classroom != null" >
+        #{classroom,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null" >
+        #{gradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzyc.registerSystem.po.RealSchedule" >
+    update real_schedule
+    <set >
+      <if test="classroom != null" >
+        classroom = #{classroom,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null" >
+        grade_id = #{gradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzyc.registerSystem.po.RealSchedule" >
+    update real_schedule
+    set classroom = #{classroom,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      grade_id = #{gradeId,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selPTWT" resultMap="BaseResultMap" parameterType="String">
+			SELECT real_schedule.date FROM real_schedule,grade WHERE real_schedule.grade_id = grade.id AND grade.class_id = '项目组' AND real_schedule.date &gt;= #{0} AND real_schedule.date &lt;= #{1} ORDER BY real_schedule.date ASC 
+  </select>
+  
+  <select id="selLeft" resultMap="BaseResultMap" parameterType="String">
+			SELECT real_schedule.date FROM real_schedule,grade WHERE real_schedule.grade_id = grade.id AND grade.class_id = '项目组' AND real_schedule.date &gt;= #{0} AND real_schedule.date &lt; #{1} ORDER BY real_schedule.date ASC 
+  </select>
+  
+  <!-- 查询时间判断是否迟到 -->
+  
+  <select id="selectTimeByDate"  parameterType="com.hzyc.registerSystem.po.RealSchedule" resultType="String">
+  			select time from real_schedule where date=#{date,jdbcType=VARCHAR} and grade_id=#{gradeId,jdbcType=VARCHAR}
+  
+  </select>
+  
+    <select id="selGradeWT" resultMap="BaseResultMap" parameterType="String">
+			SELECT real_schedule.date FROM real_schedule,grade WHERE real_schedule.grade_id = grade.id AND grade.class_id = #{0} AND real_schedule.date &gt;= #{1} AND real_schedule.date &lt;= #{2} ORDER BY real_schedule.date ASC 
+  </select>
+  
+  <select id="selGradeLeft" resultMap="BaseResultMap" parameterType="String">
+			SELECT real_schedule.date FROM real_schedule,grade WHERE real_schedule.grade_id = grade.id AND grade.class_id = #{0} AND real_schedule.date &gt;= #{1} AND real_schedule.date &lt; #{2} ORDER BY real_schedule.date ASC 
+  </select>
+  
+</mapper>

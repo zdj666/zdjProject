@@ -1,0 +1,288 @@
+package com.hzyc.registerSystem.controller;
+
+import java.io.File;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import com.hzyc.registerSystem.po.RealSchedule;
+import com.hzyc.registerSystem.po.SelectSigning;
+import com.hzyc.registerSystem.po.Signing;
+import com.hzyc.registerSystem.po.UserRole;
+import com.hzyc.registerSystem.po.Users;
+import com.hzyc.registerSystem.services.StuService;
+import com.hzyc.registerSystem.services.emPowerService;
+import com.hzyc.registerSystem.tools.LOCALMAC;
+
+@Controller
+public class StuController {
+	@Autowired
+	StuService  stuService;
+	@Autowired
+	emPowerService emPowerService;
+	
+	@RequestMapping("/stuRegister.do")
+	public String insertByuser(Users users, MultipartFile caseImage,HttpSession session){
+	try {
+		//图片处理
+	byte[] picFile=caseImage.getBytes();
+	users.setPicture(picFile); 
+		//获取图片名称
+	    String picNameCode=users.getCode();
+		String pictureName = picNameCode+caseImage.getOriginalFilename();
+		//System.out.println("上传文件的图片名："+pictureName);	
+		String tomcatPath = session.getServletContext().getRealPath("/photo");
+		//System.out.println(tomcatPath);
+		String finalPath = tomcatPath+"\\" + pictureName;
+		//System.out.println("图片路径"+finalPath);
+		//将图片名赋值到对象上添加到数据库中
+		users.setPictureName(pictureName);
+		//将图片写到服务器上。
+		File target = new File(finalPath);
+		caseImage.transferTo(target);
+				
+	    LOCALMAC getMAc=new	LOCALMAC();
+		String mac=getMAc.toString();
+		String macAddress=mac.substring(mac.length()-6);
+		users.setMac(macAddress);
+		//System.out.println("这里是我要获取的mac地址："+macAddress);
+		boolean result=stuService.insert(users);
+		//result=true添加成功,回到index.jsp,否则回到注册页面
+		if(result){
+			return "login.jsp";
+			
+		}else{
+			
+			return "stuRegister.jsp";
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+	return "login.jsp";
+		
+	}
+	
+	//查询学生个人所有信息
+	@RequestMapping("/selectByCode.do")
+	public 	ModelAndView  selectByCode(String code,HttpServletRequest request,Users users){
+		    //String codeValue=session.getAttribute("code").toString();
+		Users u = (Users) request.getSession().getAttribute("user");
+		
+		//System.out.println("----------->"+u.getCode());
+			Users stuUsersInfo=stuService.selectByCode(u.getCode());
+		
+			ModelAndView modelAndView=new ModelAndView();
+			System.out.println(u.getId()+"这个Id是什么呢");
+			String getPower=emPowerService.JudgeUserHas(u.getId());
+			System.out.println(getPower+"这里面有哦你关系？？？？？？？？？？？？？？？？？？？？？？？？");
+		
+			request.setAttribute("getSureShow",getPower);
+			modelAndView.addObject("stuUsersInfo", stuUsersInfo);
+			modelAndView.setViewName("stuInfoManager.jsp");
+			return modelAndView;	
+			}
+	
+	
+	//查询学生个人所有信息
+	@RequestMapping("/selectCode.do")
+	public 	ModelAndView  selectCode(HttpServletRequest request){
+			Users u = (Users) request.getSession().getAttribute("user");
+			Users stuUsersInfo=stuService.selectByCode(u.getCode());
+			System.out.println("------------>"+u.getCode());
+			System.out.println(u.getId()+"这个Id是什么呢");
+			String getPower=emPowerService.JudgeUserHas(u.getId());
+			System.out.println(getPower+"这里面有哦你关系？？？？？？？？？？？？？？？？？？？？？？？？");
+		
+			request.setAttribute("getSureShow",getPower);
+			ModelAndView modelAndView=new ModelAndView();
+			modelAndView.addObject("stuUsersInfo", stuUsersInfo);
+			modelAndView.setViewName("stuInfoSignning.jsp");
+			return modelAndView;	
+			}
+	//修改学生信息
+	@RequestMapping("/updateStuInfo.do")
+	public String updateByPrimaryKeySelective( Users users){
+		stuService.updateByPrimaryKeySelective(users);
+		return "selectCode.do";
+	
+	}
+	
+	//deleteById删除信息通过Id
+	@RequestMapping("/deleteStuInfo.do")
+	public String deleteById(String id){
+		stuService.deleteById(id);
+		return "login.jsp";
+	
+	}
+	
+	//查询课表判断是否迟到selectReal_Schedule.do
+	@RequestMapping("/selectReal_Schedule.do")
+	public void selectTimeByDate(RealSchedule realSchedule,HttpServletResponse response,HttpServletRequest  request){
+			  String date= request.getParameter("date");
+			  //String classroom= request.getParameter("classroom");
+			  //realSchedule.setClassroom(classroom);
+			  //根据班级ID查询时间
+			 Users u = (Users) request.getSession().getAttribute("user");
+			 String gradeId=request.getSession().getAttribute("gradeId").toString();
+			 realSchedule.setGradeId(gradeId);
+			  //System.out.println("----------班级-----"+u.getClassId());
+			  realSchedule.setDate(date);
+		try {
+			String selectTime=stuService.selectTimeByDate(realSchedule);
+			System.out.println("--------查到的时间------"+selectTime);
+			response.setCharacterEncoding("utf-8");
+			//以流的形式返回值
+			PrintWriter writer=response.getWriter();
+			writer.print(selectTime);
+			writer.flush();
+			writer.close();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	//根据班号查询grade得到grade_id    SELECT id FROM grade WHERE class_id='腾飞2期';
+	//语句在SignningMapper
+	@RequestMapping("/selectGradeId.do")
+	public ModelAndView selectGradeId(String classId,HttpServletRequest  request){
+		Users u = (Users) request.getSession().getAttribute("user");
+		classId=u.getClassId();
+		String gradeId=stuService.selectGradeId(classId);
+		request.getSession().setAttribute("gradeId", gradeId);
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("newSignning.jsp");
+		 return modelAndView;
+		
+		
+	}
+	                                    
+	                                    
+	//签到添加状态到数据库签到表
+	@RequestMapping("/insertSignning.do")
+	public String insertSignning( Signing signing,HttpServletRequest request){
+		
+		Users u = (Users) request.getSession().getAttribute("user");
+		//System.out.println("----userid------->"+u.getId());
+		signing.setUserId(u.getId());
+		//System.out.println(signing.getState());
+		try {
+			boolean result=stuService.insertSigning(signing);
+			if(result){
+				return "selectAction.do";
+				
+			}else{
+				
+				return "newSignning.jsp";
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "selectAction.do";
+		
+	}
+	
+	//查询身份证号是否存在
+	@RequestMapping("/selectIdNumber.do")
+	public void selectIdNumber(String idNumber,HttpServletResponse response,HttpServletRequest  request){
+	try {
+		String result="";
+		response.setCharacterEncoding("utf-8");
+		String selectResult=stuService.selectIdNumber(idNumber);
+		if(selectResult!=null){
+			result="NO";	
+		}else{
+			result="YES";
+		}
+		
+		//以流的形式返回值
+		PrintWriter writer=response.getWriter();
+		writer.print(result);
+		writer.flush();
+		writer.close();	
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
+}
+	
+//查询个人签到情况
+	@RequestMapping("/selectAction.do")
+	public ModelAndView	selectState(SelectSigning selectSigning,HttpServletRequest request){
+		//--------------------------------
+		//Date类:可以获取当前的系统时间
+		Date d = new Date();
+		//System.out.println("系统时间的时间---------->"+d);
+		//格式化时间:2017-05-18 19:33:00
+		//简单日期格式化工具类:括号里指定需要的格式
+		//MM表示月份，mm表示分钟，HH表示24小时制，hh表示12小时制
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String endDate = sdf.format(d);
+		//System.out.println("转换时间的时间yyyy-MM-dd---------->"+endDate);
+		
+		//2017年05月18日，计算53天之后的是几月几号。
+		//原理：将当前的时间化为毫秒数，计算53天的毫秒数，相加，之后转化为日期
+		//1000毫秒 = 1秒
+		//格林威治时间：以1970年0点为开始到现在的时间的毫秒差。
+		long dmMinutes = d.getTime();
+		//System.out.println("系统时间的时间---------->+dmMinutes:"+dmMinutes);
+		long after = 30 * 24 * 60 * 60 * 1000L;
+		//System.out.println("系统时间之后的时间---------->"+after);
+		long sum = dmMinutes - after;
+		
+		//把毫秒数转化为Date类，直接将参数写到()内
+		Date later = new Date(sum);
+		//System.out.println("最后的时间---------->"+later);
+		String startDate = sdf.format(later);
+		//System.out.println("最后转化的时间---------->"+startDate);
+		//-----------------------------
+		Users u = (Users) request.getSession().getAttribute("user");
+		selectSigning.setUserId(u.getId().toString());
+		selectSigning.setStartDate(startDate);
+		selectSigning.setEndDate(endDate);
+		//System.out.println("----aaaauserid------->"+selectSigning.getUserId());
+		List<Signing> signingState=stuService.selectState(selectSigning);
+		int inTimeCount=0;
+		int noTimeCount=0;
+		int leave=0;
+		for(int i=0;i<signingState.size();i++){
+			Signing signingValue=signingState.get(i);
+			String state=signingValue.getState().toString();
+			if(state.equals("1")){
+				inTimeCount++;	
+			}else if(state.equals("2")){
+				noTimeCount++;
+			}else{
+				leave++;
+				
+			}
+			
+		}
+	
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.addObject("signingState", signingState);
+		modelAndView.addObject("inTimeCount",inTimeCount);
+		modelAndView.addObject("noTimeCount",noTimeCount);
+		modelAndView.addObject("leave",leave);
+		modelAndView.setViewName("stuState.jsp");
+		//modelAndView.setViewName("newStuSate.jsp");
+		return modelAndView;
+		
+	}
+}

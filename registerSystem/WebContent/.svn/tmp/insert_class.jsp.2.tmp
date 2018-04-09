@@ -1,0 +1,49 @@
+<%@page import="com.hzyc.registerSystem.po.Users"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>开班</title>
+</head>
+
+<body>
+
+ 
+
+<body style="text-align: center;">
+
+
+<div style="position:absolute;margin-left:200px;margin-top:150px;width:500px;height:400px;">
+
+   <form action="insertClass.do" method="post">
+
+<<<<<<< .mine
+     <span style="position:absolute;margin-left:38px;margin-top:7px;"> 班号 ：</span>   	  <input type="text" name="classId" style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:120px;margin-top:7px;"/><br/>
+     <span style="position:absolute;margin-left:11px;margin-top:17px;"> 开班日期：</span>      <input type="date" name="classData" id="getDate" style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:120px;margin-top:17px;"/><br/>
+     <span style="position:absolute;margin-left:-20px;margin-top:27px;">  预计结班日期：</span> <input type="date" name="endTime" id="getDate"	style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:120px;margin-top:27px;" /><br/>
+     <span style="position:absolute;margin-left:27px;margin-top:37px;">用户ID： </span>        <input type="text" value=<%=request.getAttribute("UserCode")%> name="userId" style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:120px;margin-top:37px;" readonly/><br/>
+     <span style="position:absolute;margin-left:28px;margin-top:47px;"> 课程名：</span>        <input type="text" name="courseName"	style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:120px;margin-top:47px;" /><br/>
+         						  <input type="hidden" name="state" style="width:80px;height:20px;border-radius:10px;position:absolute;margin-left:100px;margin-top:57px;"/>
+    							  <input type="submit" value="注册"  style="width:80px;height:20px;border-radius:10px;position:absolute;margin-left:100px;margin-top:67px;"/>
+=======
+     <span style="position:absolute;margin-left:138px;margin-top:7px;"> 班号 ：</span>   	  <input type="text" name="classId" style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:220px;margin-top:7px;"/><br/>
+     <span style="position:absolute;margin-left:111px;margin-top:17px;"> 开班日期：</span>      <input type="date" name="classData" id="getDate" style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:220px;margin-top:17px;"/><br/>
+     <span style="position:absolute;margin-left:80px;margin-top:27px;">  预计结班日期：</span> <input type="date" name="endTime" id="getDate"	style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:220px;margin-top:27px;" /><br/>
+     <span style="position:absolute;margin-left:127px;margin-top:37px;">用户ID： </span>        <input type="text" value=<%=request.getAttribute("UserCode")%> name="userId" style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:220px;margin-top:37px;" readonly/><br/>
+     <span style="position:absolute;margin-left:128px;margin-top:47px;"> 课程名：</span>        <input type="text" name="courseName"	style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:220px;margin-top:47px;" /><br/>
+     <span style="position:absolute;margin-left:128px;margin-top:47px;display:none;"> 状态：</span><input type="text" name="state" value="1" style="width:130px;height:20px;border-radius:10px;position:absolute;margin-left:220px;margin-top:47px;display: none;" /><br/>
+         						  <input type="hidden" name="state" style="width:80px;height:20px;border-radius:10px;position:absolute;margin-left:180px;margin-top:57px;"/>
+    							  <input type="submit" value="注册"  style="width:80px;height:20px;border-radius:10px;position:absolute;margin-left:170px;margin-top:67px;"/>
+>>>>>>> .r671
+
+
+    </form>
+
+</div>
+
+ 
+
+</body>
+</html>

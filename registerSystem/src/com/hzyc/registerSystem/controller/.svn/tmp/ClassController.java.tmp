@@ -1,0 +1,230 @@
+package com.hzyc.registerSystem.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.Gson;
+import com.hzyc.registerSystem.po.Course;
+import com.hzyc.registerSystem.po.Dictionary;
+import com.hzyc.registerSystem.po.Grade;
+import com.hzyc.registerSystem.po.RealSchedule;
+import com.hzyc.registerSystem.po.Users;
+import com.hzyc.registerSystem.services.ClassService;
+import com.hzyc.registerSystem.tools.BaseServlet;
+
+@Controller
+public class ClassController {
+	@Autowired
+    private ClassService classService;
+	@Autowired
+	private com.hzyc.registerSystem.services.ChangeDictionaryService ChangeDictionaryService;
+	
+	@Autowired
+	private ClassService cs;
+	List<Users> u = new ArrayList<Users>();
+	
+	@RequestMapping("/queryAllClassId.do")
+	   public ModelAndView queryAllClssId(String classSelect,HttpServletRequest request){
+		request.setAttribute("TiaoVal","1");
+		//System.out.println("===================()" + classSelect);
+		Users u = new Users();
+		u.setClassId(classSelect);
+		List<Users> fdList=classService.queryAllClassId(u);
+		ModelAndView modelAndView = new ModelAndView();	
+		modelAndView.addObject("usersItems",fdList);
+		modelAndView.setViewName("Class.jsp");
+		return modelAndView;
+		} 
+	@RequestMapping("/queryGradeAndUsersByClssId.do")
+	 public void queryCountByClassId(HttpServletResponse response,HttpServletRequest request) throws IOException{
+		System.out.println("进入了queryGradeAndUsersByClssId.do()");
+		String classId = request.getParameter("classId");
+		System.out.println("classId===" + classId);
+		Users u = (Users)request.getSession().getAttribute("user");
+		u.setClassId(classId);
+		List<Grade> uList =classService.selGradeAndUsersByClassId(u);
+		System.out.println("uList===" + uList.size());
+		Gson g = new Gson();
+		//转换数据类型
+		String retext = g.toJson(uList);
+		
+		//开始返回
+		response.setContentType("text/html");
+		//设置返回编码方式
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+	
+		out.print(retext);
+		out.flush();
+		out.close();
+	}
+		
+//	@RequestMapping("/selGradeAndUsersByClassId.do")
+//	 public ModelAndView  selGradeAndUsersByClassId(String classId,HttpServletResponse response) throws IOException{
+//		System.out.println("我执行了selGradeAndUsersByClassId！！");
+//		ModelAndView mav = new ModelAndView();
+//		List<Grade> uList =classService.selGradeAndUsersByClassId(classId);
+//		mav.addObject("uList", uList);
+//		mav.addObject("TiaoVal", "1");
+//		mav.setViewName("Class.jsp");
+//		return mav;
+//	}
+
+	@RequestMapping("/queryGradeAndUsersByUserId.do")
+	public void queryGradeAndUsersByUserId(HttpServletResponse response,HttpServletRequest request) throws IOException{
+		//System.out.println("进入了queryGradeAndUsersByUserId.do!!!!!!!!!!!" );
+		//ModelAndView mav = new ModelAndView();
+			Users u = (Users) request.getSession().getAttribute("user");
+			//System.out.println("userId====="  + u.getId());
+			List<Users> uList =classService.queryGradeAndUsersByUserId(u.getId());
+
+			
+			//gson对json的封装，数据类型的转换
+			Gson g = new Gson();
+			//转换数据类型
+			String retext = g.toJson(uList);
+			
+			//开始返回
+			response.setContentType("text/html");
+			//设置返回编码方式
+			response.setCharacterEncoding("utf-8");
+			PrintWriter out = response.getWriter();
+		
+			out.print(retext);
+			out.flush();
+			out.close();
+			
+			//System.out.println("==========aaaaaaa" + uList.size());	
+//			mav.addObject("uList", uList);
+//			mav.addObject("TiaoVal", "1");
+//			mav.setViewName("Class.jsp");
+			//return mav;
+	}
+	
+	 @RequestMapping("/queryStuSizeByClassId.do")
+	 public void queryStuSizeByClassId(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		
+		 String classId = request.getParameter("classId");
+		 List<Users> stuList = classService.queryStuByClassId(classId);
+		//gson对json的封装，数据类型的转换
+			Gson g = new Gson();
+			//转换数据类型
+			String retext = g.toJson(stuList);
+			//开始返回
+			response.setContentType("text/html");
+			//设置返回编码方式
+			response.setCharacterEncoding("utf-8");
+			PrintWriter out = response.getWriter();
+			out.print(retext);
+			out.flush();
+			out.close();
+	 }
+	 
+	
+	 @RequestMapping("/queryStuMessageByClassId.do")
+	public ModelAndView queryStuMessageByClassId(String classId,HttpServletRequest request){
+		//System.out.println("===========aaaaaaaaaassss" +classId);
+		List<Users> list=classService.queryStuMessageByClassId(classId);
+		ModelAndView modelAndView = new ModelAndView();	
+		modelAndView.addObject("usersItems",list);
+		modelAndView.setViewName("byClassId_stuMessage.jsp");
+		return modelAndView;
+		
+	} 
+	 
+	 @RequestMapping("/insertClass.do")
+	public String insertClass(Grade g,HttpServletRequest request){
+		String username =  (String) request.getSession().getAttribute("username");
+			try {
+				System.out.println("insertClass.do方法执行了");
+				
+				System.out.println("我就看你执行没哟？？？？？？？？"+g.getState()+g.getClassId()+g.getClassData()+g.getCourseName()+g.getUserId());
+				boolean result = classService.insertClass(g);
+				List<Course> rsList = new ArrayList<Course>();
+				if(result){
+					//通过成功的信息查出成功的id
+					int id = cs.selIdByGrage(g).getId();
+				for(int i = 0;i<7;i++){
+					Course rs = new Course();
+					Users user = (Users)request.getSession().getAttribute("user");
+					rs.setUserId(user.getId());
+					//这个id要从数据库里面查出来
+					rs.setGradeId(id);
+					switch(i){
+						case 0:
+							rs.setWeek("星期一");
+							break;
+						case 1:
+							rs.setWeek("星期二");
+							break;
+						case 2:
+							rs.setWeek("星期三");
+							break;
+						case 3:
+							rs.setWeek("星期四");
+							break;
+						case 4:
+							rs.setWeek("星期五");
+							break;
+						case 5:
+							rs.setWeek("星期六");
+							break;
+						case 6:
+							rs.setWeek("星期日");
+							break;
+					}
+					rsList.add(rs);
+				}
+				}
+				if(result){
+					for(int i = 0;i<7;i++){
+						cs.insertCourse(rsList.get(i));
+					}
+				}
+				/*id:自增
+				 *type="班级名称"
+				 *code="获取到最大值"
+				 *name="值"
+				 *states="启用" 
+				 * 
+				 * */
+				int getMaxCode=Integer.parseInt(ChangeDictionaryService.getMaxCode())+1;
+				String getMaxCodes=String.valueOf(getMaxCode);
+				Dictionary dic=new Dictionary();
+				dic.setCode(getMaxCodes);
+				dic.setName(g.getClassId());
+				boolean Judge=ChangeDictionaryService.addDic(dic);
+				
+				
+				
+				if(result){
+					
+					BaseServlet Base=new BaseServlet();
+					
+					return "Class.jsp";	
+				}else{
+					
+					return "添加失败";
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "Class.jsp";
+			
+		} 
+	 
+	 
+   
+}

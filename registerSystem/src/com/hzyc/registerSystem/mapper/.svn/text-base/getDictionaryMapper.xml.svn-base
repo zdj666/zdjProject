@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+	<mapper namespace="com.hzyc.registerSystem.mapper.getDictionaryMapper">
+		
+		<select id="getDictionary" parameterType="String" resultType="Dictionary" >	
+			select *from Dictionary where type=#{type} and states='启用'
+		</select>
+		
+		<select id="getPerType" resultType="String">
+		select DISTINCT type FROM dictionary
+		</select>
+		
+		
+	</mapper>

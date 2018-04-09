@@ -1,0 +1,25 @@
+#Sat Dec 02 16:55:40 CST 2017
+eclipse.preferences.version=1
+encoding//WebContent/assets/js/jquery-1.8.3.min.js=UTF-8
+encoding//WebContent/assets/js/jquery-ui.min.js=UTF-8
+encoding//WebContent/assets/js/jquery.nicescroll.js=UTF-8
+encoding//WebContent/js/flotr2.min.js=GBK
+encoding//WebContent/js/jquery-1.8.3.min.js=GBK
+encoding//WebContent/js/laydate.js=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/DemoIfo.java=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/GetClassName.java=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/LoggorIfo.java=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/RetrievePassword.java=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/TimeConflict.java=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/UpdateCalendarIfo.java=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/WeekCalendar.java=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/ZCManager.java=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/dataDictionary.java=UTF-8
+encoding//src/com/hzyc/registerSystem/controller/emPower.java=UTF-8
+encoding//src/com/hzyc/registerSystem/mapper/UsersMapper.java=UTF-8
+encoding//src/com/hzyc/registerSystem/services/impl/AdminServiceImpl.java=GBK
+encoding//src/com/hzyc/registerSystem/services/impl/InitServiceImp.java=UTF-8
+encoding//src/com/hzyc/registerSystem/tools/AutoCalendar.java=UTF-8
+encoding//src/com/hzyc/registerSystem/tools/BaseServlet.java=UTF-8
+encoding//src/com/hzyc/registerSystem/tools/DictTag.java=UTF-8
+encoding//src/com/hzyc/registerSystem/tools/LogAopAction.java=UTF-8

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC 
+	"-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+	
+	<!-- 配置：加载数据库配置文件、别名、mybatis环境=事务管理者+数据源、Mapper.xml注册（持久层） -->
+	<configuration>
+		<!-- mybatis-spring-springmvc 
+		spring代理，容器:管理了mybatis。(加载数据库配置文件、mybatis环境=事务管理者+数据源、Mapper.xml注册)
+		   -->
+		   <typeAliases>
+		   		<!-- 批量定义别名 -->
+		   		<package name="com.hzyc.registerSystem.po"/>
+		   </typeAliases>
+		   
+	
+	
+	
+	
+	</configuration>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzyc.registerSystem.mapper.TimetableMapper" >
+  <resultMap id="BaseResultMap" type="com.hzyc.registerSystem.po.Timetable" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="classroom" property="classroom" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="course" property="course" jdbcType="VARCHAR" />
+    <result column="week" property="week" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="grade_id" property="gradeId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, classroom, user_id, course, week, time, grade_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from timetable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from timetable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hzyc.registerSystem.po.Timetable" >
+    insert into timetable (id, classroom, user_id, 
+      course, week, time, 
+      grade_id)
+    values (#{id,jdbcType=INTEGER}, #{classroom,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{course,jdbcType=VARCHAR}, #{week,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
+      #{gradeId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzyc.registerSystem.po.Timetable" >
+    insert into timetable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="classroom != null" >
+        classroom,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="course != null" >
+        course,
+      </if>
+      <if test="week != null" >
+        week,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="gradeId != null" >
+        grade_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="classroom != null" >
+        #{classroom,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="course != null" >
+        #{course,jdbcType=VARCHAR},
+      </if>
+      <if test="week != null" >
+        #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null" >
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzyc.registerSystem.po.Timetable" >
+    update timetable
+    <set >
+      <if test="classroom != null" >
+        classroom = #{classroom,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="course != null" >
+        course = #{course,jdbcType=VARCHAR},
+      </if>
+      <if test="week != null" >
+        week = #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null" >
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzyc.registerSystem.po.Timetable" >
+    update timetable
+    set classroom = #{classroom,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      course = #{course,jdbcType=VARCHAR},
+      week = #{week,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      grade_id = #{gradeId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

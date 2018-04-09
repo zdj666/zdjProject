@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzyc.registerSystem.mapper.DictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.hzyc.registerSystem.po.Dictionary" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, code, name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hzyc.registerSystem.po.Dictionary" >
+    insert into dictionary (id, type, code, 
+      name)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzyc.registerSystem.po.Dictionary" >
+    insert into dictionary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzyc.registerSystem.po.Dictionary" >
+    update dictionary
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzyc.registerSystem.po.Dictionary" >
+    update dictionary
+    set type = #{type,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="testHere" resultType="Users">
+  
+  	select *from Users;
+  </select>
+  
+  
+  <select id="getAllDictionary" parameterType="int" resultType="Dictionary">
+  	SELECT *from dictionary limit #{page},8
+  </select>
+  
+    <select id="getAllName" resultType="Dictionary">
+  	SELECT DISTINCT type FROM dictionary
+  	</select>
+  	
+  	
+  	<select id="getSecDictionary"  parameterType="Dictionary" resultType="Dictionary">
+  	SELECT *from dictionary where type=#{type} limit #{page},8
+   	</select>
+  	
+  	<update id="updateDictionary" parameterType="Dictionary" >
+  		update dictionary set name=#{name} where code=#{code}
+  	</update>
+  	
+  	<select id="getMaxType" parameterType="String" resultType="Dictionary" >
+  		select *from dictionary where type=#{type} 
+   	</select>
+  	<insert id="insertAddValue" parameterType="Dictionary"> 
+  		insert into dictionary (type,code,name,states) values(#{type},#{code},#{name},'启用') 
+  	</insert>
+  	<update id="updateStates" parameterType="Dictionary">
+  		update dictionary set states=#{states} where name=#{name}
+  	</update>
+  
+  
+  	<delete id="deletDicByCode" parameterType="String" >
+  		delete from dictionary where code=#{code}
+  	</delete>
+  	
+  	<update id="updateCodeAfterDel" parameterType="Dictionary">
+  		update dictionary set code=#{nowCode},id=#{id} where code=#{code}
+  	</update>
+  
+  	<select id="selectCode" parameterType="String" resultType="String">
+  		select code form dictionary where type=#{type}
+  	</select>
+  	
+  	<select id="getMaxCode" resultType="String">
+  		select code from dictionary where type='班级名称' ORDER BY id DESC LIMIT 0,1
+  	</select>
+  	
+  	<insert id="addDic" parameterType="Dictionary"  >
+  		insert into dictionary (type,code,name,states) values('班级名称',#{code},#{name},'启用')
+  	</insert>
+  	
+  	<select id="getMaxCodes" resultType="int">
+  	
+  		SELECT MAX(CODE) FROM dictionary
+  	
+  	</select>
+  	
+  	<insert id="intodicNewType" parameterType="Dictionary">
+  	
+  		insert into dictionary (type,code,name,states) values(#{type},#{code},#{name},'启用'); 
+  	
+  	</insert>
+  	
+  	<select id="getAllDicPage" resultType="int">
+  	
+  		select count(*) from dictionary
+  	</select>
+  	
+  	<select id="getSecPage" parameterType="String" resultType="int">
+  	
+  		select count(*) from dictionary where type=#{type}
+  	</select>
+  	
+  	
+  	
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+	<mapper namespace="com.hzyc.registerSystem.mapper.ZCManagerMapper">
+		
+		<select id="getUsers" parameterType="String" resultType="Users" >	
+			select *from Users
+		</select>
+		<!--判断用户名是否已经存在了 -->
+		<select id="UserHave"	parameterType="String" resultType="Users">
+			select *from Users where code=#{code}
+		
+		</select>
+		
+	</mapper>

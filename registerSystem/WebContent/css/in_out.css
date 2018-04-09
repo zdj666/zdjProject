@@ -1,0 +1,32 @@
+select,option{
+		width:180px;
+		height:40px;
+		border:0;
+		border:1px solid #666;
+		border-radius:5px;
+		font-size:16px;
+		background-color: #fff;
+		text-align:center;
+	}
+input[type='submit']{
+		width:100px;
+		height:30px;
+		background-color: #68dff0;
+		border-radius:5px;
+		border:0;
+		color:#fff;
+		font-size:20px;
+		font-weight:600;
+		
+}
+input[type='button']{
+		width:100px;
+		height:30px;
+		background-color: #68dff0;
+		border-radius:5px;
+		border:0;
+		color:#fff;
+		font-size:20px;
+		font-weight:600;
+		
+}

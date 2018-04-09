@@ -1,0 +1,419 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/sign_in/!svn/ver/1204/registerSystem/WebContent
+END
+new.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/sign_in/!svn/ver/542/registerSystem/WebContent/new.jsp
+END
+stats_pt_week_time.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/sign_in/!svn/ver/1108/registerSystem/WebContent/stats_pt_week_time.jsp
+END
+leave.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sign_in/!svn/ver/1193/registerSystem/WebContent/leave.jsp
+END
+register_clue.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sign_in/!svn/ver/1203/registerSystem/WebContent/register_clue.jsp
+END
+stats_pt_pie.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sign_in/!svn/ver/1111/registerSystem/WebContent/stats_pt_pie.jsp
+END
+stats_grade.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sign_in/!svn/ver/1187/registerSystem/WebContent/stats_grade.jsp
+END
+statistics_projectteam_week.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/sign_in/!svn/ver/1182/registerSystem/WebContent/statistics_projectteam_week.jsp
+END
+ShowDictionary.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sign_in/!svn/ver/1213/registerSystem/WebContent/ShowDictionary.jsp
+END
+register_employees.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sign_in/!svn/ver/914/registerSystem/WebContent/register_employees.jsp
+END
+index.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sign_in/!svn/ver/1202/registerSystem/WebContent/index.jsp
+END
+searchLeaveForPro.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sign_in/!svn/ver/1137/registerSystem/WebContent/searchLeaveForPro.jsp
+END
+set_worktime.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sign_in/!svn/ver/99/registerSystem/WebContent/set_worktime.jsp
+END
+stuInAndOut.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sign_in/!svn/ver/1184/registerSystem/WebContent/stuInAndOut.jsp
+END
+byClassId_stuMessage.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/sign_in/!svn/ver/1192/registerSystem/WebContent/byClassId_stuMessage.jsp
+END
+stats_tno.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sign_in/!svn/ver/1083/registerSystem/WebContent/stats_tno.jsp
+END
+stats_grade_time.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/sign_in/!svn/ver/1113/registerSystem/WebContent/stats_grade_time.jsp
+END
+logIfo.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/sign_in/!svn/ver/1197/registerSystem/WebContent/logIfo.jsp
+END
+classFrame.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sign_in/!svn/ver/1198/registerSystem/WebContent/classFrame.jsp
+END
+stuRegister.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sign_in/!svn/ver/1200/registerSystem/WebContent/stuRegister.jsp
+END
+stuInfoSignning.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sign_in/!svn/ver/706/registerSystem/WebContent/stuInfoSignning.jsp
+END
+demo.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/sign_in/!svn/ver/251/registerSystem/WebContent/demo.jsp
+END
+weekCalendar.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sign_in/!svn/ver/1186/registerSystem/WebContent/weekCalendar.jsp
+END
+blank.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/sign_in/!svn/ver/894/registerSystem/WebContent/blank.jsp
+END
+insert_class.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sign_in/!svn/ver/1156/registerSystem/WebContent/insert_class.jsp
+END
+practice.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sign_in/!svn/ver/126/registerSystem/WebContent/practice.jsp
+END
+updateLeave.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sign_in/!svn/ver/1184/registerSystem/WebContent/updateLeave.jsp
+END
+stats_grade_week_stack.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/sign_in/!svn/ver/1112/registerSystem/WebContent/stats_grade_week_stack.jsp
+END
+stats_pt_week_stack.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/sign_in/!svn/ver/1109/registerSystem/WebContent/stats_pt_week_stack.jsp
+END
+Class.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/sign_in/!svn/ver/1198/registerSystem/WebContent/Class.jsp
+END
+ZCManager.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sign_in/!svn/ver/888/registerSystem/WebContent/ZCManager.jsp
+END
+login.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/sign_in/!svn/ver/853/registerSystem/WebContent/login.jsp
+END
+stats_grade_week_right.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/sign_in/!svn/ver/1182/registerSystem/WebContent/stats_grade_week_right.jsp
+END
+teacherEnter.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sign_in/!svn/ver/190/registerSystem/WebContent/teacherEnter.jsp
+END
+stats_grade_week.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/sign_in/!svn/ver/1102/registerSystem/WebContent/stats_grade_week.jsp
+END
+isLeaveForPro.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sign_in/!svn/ver/1184/registerSystem/WebContent/isLeaveForPro.jsp
+END
+teacherMessage.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sign_in/!svn/ver/321/registerSystem/WebContent/teacherMessage.jsp
+END
+error404.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sign_in/!svn/ver/788/registerSystem/WebContent/error404.jsp
+END
+searchLeave.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sign_in/!svn/ver/1071/registerSystem/WebContent/searchLeave.jsp
+END
+update_stuMessage.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sign_in/!svn/ver/1192/registerSystem/WebContent/update_stuMessage.jsp
+END
+stuInfoManager.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sign_in/!svn/ver/1201/registerSystem/WebContent/stuInfoManager.jsp
+END
+newSignning.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sign_in/!svn/ver/1174/registerSystem/WebContent/newSignning.jsp
+END
+stuMessageFrame.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sign_in/!svn/ver/1181/registerSystem/WebContent/stuMessageFrame.jsp
+END
+updateCalendarProgessGroup.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/sign_in/!svn/ver/1138/registerSystem/WebContent/updateCalendarProgessGroup.jsp
+END
+selExportStudent.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/sign_in/!svn/ver/1184/registerSystem/WebContent/selExportStudent.jsp
+END
+register_zuyuan.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sign_in/!svn/ver/1024/registerSystem/WebContent/register_zuyuan.jsp
+END
+iframe.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/sign_in/!svn/ver/1163/registerSystem/WebContent/iframe.jsp
+END
+statistics_week.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sign_in/!svn/ver/1153/registerSystem/WebContent/statistics_week.jsp
+END
+week_process_group.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/sign_in/!svn/ver/1030/registerSystem/WebContent/week_process_group.jsp
+END
+register_top.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sign_in/!svn/ver/1204/registerSystem/WebContent/register_top.jsp
+END
+stats_grade_student.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/sign_in/!svn/ver/1107/registerSystem/WebContent/stats_grade_student.jsp
+END
+register_bottom.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sign_in/!svn/ver/1203/registerSystem/WebContent/register_bottom.jsp
+END
+RetrievePassword.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/sign_in/!svn/ver/1033/registerSystem/WebContent/RetrievePassword.jsp
+END
+updateCalendar.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sign_in/!svn/ver/1197/registerSystem/WebContent/updateCalendar.jsp
+END
+register_clue1.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sign_in/!svn/ver/1203/registerSystem/WebContent/register_clue1.jsp
+END
+stats_pt_time.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sign_in/!svn/ver/1110/registerSystem/WebContent/stats_pt_time.jsp
+END
+leaveForPro.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sign_in/!svn/ver/1193/registerSystem/WebContent/leaveForPro.jsp
+END
+isLeave.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sign_in/!svn/ver/1184/registerSystem/WebContent/isLeave.jsp
+END
+stats_no.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sign_in/!svn/ver/1084/registerSystem/WebContent/stats_no.jsp
+END
+iframeForPro.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sign_in/!svn/ver/1163/registerSystem/WebContent/iframeForPro.jsp
+END
+stats_grade_pie.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sign_in/!svn/ver/1114/registerSystem/WebContent/stats_grade_pie.jsp
+END
+student_check_frame.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/sign_in/!svn/ver/1199/registerSystem/WebContent/student_check_frame.jsp
+END
+stats_pt_week.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sign_in/!svn/ver/1180/registerSystem/WebContent/stats_pt_week.jsp
+END
+stuState.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sign_in/!svn/ver/552/registerSystem/WebContent/stuState.jsp
+END
+error500.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sign_in/!svn/ver/598/registerSystem/WebContent/error500.jsp
+END
+empower.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sign_in/!svn/ver/1212/registerSystem/WebContent/empower.jsp
+END
+test.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/sign_in/!svn/ver/821/registerSystem/WebContent/test.jsp
+END
+register_employees_new.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/sign_in/!svn/ver/1063/registerSystem/WebContent/register_employees_new.jsp
+END
+StuMessage.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sign_in/!svn/ver/1198/registerSystem/WebContent/StuMessage.jsp
+END
+student_check.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sign_in/!svn/ver/1199/registerSystem/WebContent/student_check.jsp
+END

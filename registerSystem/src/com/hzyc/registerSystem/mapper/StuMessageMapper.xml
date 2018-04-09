@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http:mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+	<mapper namespace="com.hzyc.registerSystem.mapper.StuMessageMapper">                                                
+	<resultMap id="BaseResultMap" type="com.hzyc.registerSystem.po.Users" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="register_time" property="registerTime" jdbcType="VARCHAR" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="mac" property="mac" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="picture_name" property="pictureName" jdbcType="VARCHAR" />
+  </resultMap>
+		<select id="queryStuMessageAll" resultType="Users">
+			select * from users 
+		</select>
+		
+		<insert id="insertStuMessage" parameterType="Users" >
+		 insert into users values(#{id},#{code},#{password},#{name},#{phone},#{registerTime},#{question},#{answer},#{picture},#{idNumber},#{email},#{address},#{school},#{major},#{mac},#{class_id})
+		</insert>   
+		
+		<select id="queryStuMessageByID" parameterType="String" resultType="Users">
+		 select * from users where id=#{id}
+		</select>  
+		   
+		<update id="updateStuMessageByID" parameterType="Users">
+		 update users set password=#{password},name=#{name},phone=#{phone},registerTime=#{registerTime},question=#{question},answer=#{answer},picture=#{picture},idNumber=#{idNumber},email=#{email},address=#{address},school=#{school},major=#{major} ,class_id=#{class_id} where id=#{id}
+		</update>   
+		
+		<delete id="deleteStuMessageByID" parameterType="String">
+		 delete  from users where id=#{id}
+		</delete> 
+<update id="updateStuMessageByIDForInsert" parameterType="com.hzyc.registerSystem.po.Users" >
+    update users
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+		
+		 <select id="selectStuMessage" resultType="Users">
+			select * from users 
+		</select>  
+		   
+	</mapper>

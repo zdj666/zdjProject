@@ -1,0 +1,183 @@
+<%@page import="com.hzyc.registerSystem.po.Grade"%>
+<%@page import="java.util.List"%>
+<%@page import="com.hzyc.registerSystem.po.Users"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="ex" uri="WEB-INF/custom.tld"%>   
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>班级管理界面</title>
+
+ <link rel="stylesheet" href="./css/layui.css" media="all">
+  <script src="./js/jquery-1.8.3.min.js" charset="utf-8"></script>
+ <script src="./js/layui.js" charset="utf-8"></script>
+<style type="text/css">
+.table{
+
+　　border-collapse:collapse;
+
+　　border-spacing:0px;
+
+}
+</style>
+
+<script type="text/javascript">
+
+
+    function init(){
+
+    	//1. 创建XMLHttpRequest
+		var request = new XMLHttpRequest();
+		//2. 设置监听
+		
+		request.onreadystatechange = function (){
+			
+			//判断状态（整个异步传输是否完成）
+			if(request.readyState == 4){
+				
+				//接收返回字符串
+				var data = request.responseText;
+				//转换成数组
+				var dataarr = eval("("+data+")");
+				var classIdSelect = document.getElementById("classId");
+				//对于老师登录useSize一定是1
+				var userSize =  dataarr.length;
+				//默认追加请选择选项
+				var qingxuanzeOption = document.createElement("option");	
+				qingxuanzeOption.innerText="请选择";			
+				classIdSelect.appendChild(qingxuanzeOption);
+				//追加班级名称给下拉框
+				var gradeSize = dataarr[0].gList.length;
+				for(var n=0;n<gradeSize;n++){
+					var option = document.createElement("option");	
+					option.innerText=dataarr[0].gList[n].classId;
+					//alert("classId=="+ dataarr[0].gList[n].classId);
+					classIdSelect.appendChild(option);
+				}
+				//追加全部班级信息
+			
+				var classInfo = document.getElementById("classInfo");
+				for(var m=0;m<gradeSize;m++){
+					classInfo.innerHTML += "<tr><td id='td" + m +"'>"+ dataarr[0].gList[m].classId + "</td><td>"+dataarr[0].gList[m].classData+"</td><td>"+ dataarr[0].gList[m].endTime+"</td><td>"+ dataarr[0].gList[m].courseName+"</td><td>"+ dataarr[0].gList[m].state+"</td><td><input type='button' value='查看人数' onclick='selStuCount("+m +")'/></td></tr>" ;
+				}
+			
+			}
+			
+		};
+		//3. 打开通道
+
+		request.open("post", "queryGradeAndUsersByUserId.do", true);
+		//4.设置请求头信息
+		request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		//5. 发送请求
+		request.send("");
+		
+    }
+    
+    function selStuCount(i){
+    	 	
+    	var td = document.getElementById("td" + i);
+    
+    	//1. 创建XMLHttpRequest
+		var request = new XMLHttpRequest();
+		//2. 设置监听
+		
+		request.onreadystatechange = function (){
+			
+			//判断状态（整个异步传输是否完成）
+			if(request.readyState == 4){
+				//接收返回字符串
+				var data = request.responseText;
+				//转换成数组
+				var dataarr = eval("("+data+")");
+				
+				alert(dataarr.length);
+			}
+		};
+		//3. 打开通道
+		request.open("post", "queryStuSizeByClassId.do", true);
+		//4.设置请求头信息
+		request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		//5. 发送请求
+		request.send("classId=" + td.innerText);
+		
+    	
+    }
+    
+ 
+	function selDetailClass(){
+		
+		var classId = document.getElementById("classId").value;
+		
+		//1. 创建XMLHttpRequest
+		var request = new XMLHttpRequest();
+		//2. 设置监听
+		request.onreadystatechange = function (){
+			
+			//判断状态（整个异步传输是否完成）
+			if(request.readyState == 4){
+				//接收返回字符串
+				var data = request.responseText;
+				//转换成数组
+				var dataarr = eval("("+data+")");
+				
+				//alert(dataarr.length);
+				$("#classInfo").empty();
+				//alert(dataarr[0].endTime);
+			
+				classInfo.innerHTML += "<tr><td id='td" + 0 +"'>"+ dataarr[0].classId + "</td><td>"+dataarr[0].classData+"</td><td>"+ dataarr[0].endTime+"</td><td>"+ dataarr[0].courseName+"</td><td>"+ dataarr[0].state+"</td><td><input type='button' value='查看人数' onclick='selStuCount("+0 +")'/></td></tr>" ;
+				
+			}
+		};
+		//3. 打开通道
+		request.open("post", "queryGradeAndUsersByClssId.do", true);
+		//4.设置请求头信息
+		request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		//5. 发送请求
+		request.send("classId=" + classId);
+	}
+    
+  
+</script>
+</head> 
+<body onload="init()"> 
+
+   选择班级：  <div style="display:none;" id="TiaoVal"><%=request.getAttribute("TiaoVal")%></div>
+    
+ 	<select id="classId" onchange="selDetailClass()">
+ 	
+ 	</select>
+                
+     <table  class="layui-table">
+      <colgroup>
+      <col width="200">
+      <col width="200">
+      <col width="200">
+      <col width="200">
+      <col width="200">
+      <col>
+ 
+    </colgroup>
+       <thead>
+      <tr>
+        <th>班号</th>
+        <th>开班日期</th>
+        <th>预计结班日期</th>
+         <th>课程名</th>
+         <th>班级状态</th>
+          <th>操作</th>
+      </tr> 
+    </thead>
+       
+       <tbody id="classInfo">
+       		
+       </tbody>
+       
+      
+     </table>
+    <a href="insert_class.do">开班</a>                               
+</body>
+</html>

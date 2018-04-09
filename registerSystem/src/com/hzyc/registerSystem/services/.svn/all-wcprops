@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/sign_in/!svn/ver/1207/registerSystem/src/com/hzyc/registerSystem/services
+END
+emPowerService.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/sign_in/!svn/ver/1210/registerSystem/src/com/hzyc/registerSystem/services/emPowerService.java
+END
+StuMessageService.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/sign_in/!svn/ver/1014/registerSystem/src/com/hzyc/registerSystem/services/StuMessageService.java
+END
+TimeConflictService.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/sign_in/!svn/ver/818/registerSystem/src/com/hzyc/registerSystem/services/TimeConflictService.java
+END
+DemoIfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/sign_in/!svn/ver/187/registerSystem/src/com/hzyc/registerSystem/services/DemoIfoService.java
+END
+WeekCalendarService.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/sign_in/!svn/ver/1005/registerSystem/src/com/hzyc/registerSystem/services/WeekCalendarService.java
+END
+FilterService.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/sign_in/!svn/ver/1078/registerSystem/src/com/hzyc/registerSystem/services/FilterService.java
+END
+AdminService.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/sign_in/!svn/ver/1207/registerSystem/src/com/hzyc/registerSystem/services/AdminService.java
+END
+LeaveService.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/sign_in/!svn/ver/1143/registerSystem/src/com/hzyc/registerSystem/services/LeaveService.java
+END
+StatsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/sign_in/!svn/ver/980/registerSystem/src/com/hzyc/registerSystem/services/StatsService.java
+END
+InitService.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/sign_in/!svn/ver/447/registerSystem/src/com/hzyc/registerSystem/services/InitService.java
+END
+Filter.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/sign_in/!svn/ver/1046/registerSystem/src/com/hzyc/registerSystem/services/Filter.java
+END
+GetDictionaryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/sign_in/!svn/ver/673/registerSystem/src/com/hzyc/registerSystem/services/GetDictionaryService.java
+END
+ClassService.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/sign_in/!svn/ver/1135/registerSystem/src/com/hzyc/registerSystem/services/ClassService.java
+END
+GetClassNameService.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/sign_in/!svn/ver/763/registerSystem/src/com/hzyc/registerSystem/services/GetClassNameService.java
+END
+ZCManagerService.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/services/ZCManagerService.java
+END
+RetrievePasswordService.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/sign_in/!svn/ver/250/registerSystem/src/com/hzyc/registerSystem/services/RetrievePasswordService.java
+END
+UpdateCalendarIfoService.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/sign_in/!svn/ver/187/registerSystem/src/com/hzyc/registerSystem/services/UpdateCalendarIfoService.java
+END
+StuService.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/sign_in/!svn/ver/713/registerSystem/src/com/hzyc/registerSystem/services/StuService.java
+END
+TeacherService.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/sign_in/!svn/ver/328/registerSystem/src/com/hzyc/registerSystem/services/TeacherService.java
+END
+ChangeDictionaryService.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/sign_in/!svn/ver/1210/registerSystem/src/com/hzyc/registerSystem/services/ChangeDictionaryService.java
+END

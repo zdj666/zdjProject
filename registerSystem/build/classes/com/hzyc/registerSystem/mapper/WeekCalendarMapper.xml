@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+	<mapper namespace="com.hzyc.registerSystem.mapper.WeekCalendarMapper" >
+		
+		<select id="getWeekCalendar" parameterType="String" resultType="Course">
+			select * from course where user_id = #{0} and grade_id=#{1}
+		</select>
+		<select id="getWeekCalendarGroup" parameterType="String" resultType="Course">
+			select * from course where grade_id=#{0}
+		</select>
+		<update id="updateWeekCalendar"  parameterType="Course">
+			update course set classroom=#{classroom},time=#{time}
+				where user_id = #{userId} and grade_id=#{gradeId} and week=#{week}
+		</update>  
+		<update id="updateWeekCalendarGroup"  parameterType="Course">
+			update course set classroom=#{classroom},time=#{time}
+				where grade_id=#{gradeId} and week=#{week}
+		</update>  
+		<select id="getGradeName" parameterType="String" resultType="String">
+			select class_id from grade where id = #{0} 
+		</select>
+		
+		<select id="getGradeId" parameterType="String" resultType="String">
+			select id from grade where class_id = #{0} 
+		</select>
+		
+		<delete id="deleteCal" parameterType="String" >
+			delete FROM real_schedule where user_id=#{0} and grade_id=#{1} and date &gt; #{2} and date &lt; #{3}  
+		</delete>
+		<delete id="deleteCalGroup" parameterType="String" >
+			delete FROM real_schedule where grade_id=#{0} and date &gt; #{1} and date &lt; #{2}  
+		</delete>
+		<insert id="addCal" parameterType="RealSchedule">
+			insert into real_schedule (classroom,user_id,time,grade_id,date) values(#{classroom},#{userId},#{time},#{gradeId},#{date})
+		</insert>
+		
+		<select id="getEndTime" parameterType="String" resultType="String">
+			select end_time FROM grade where user_id = #{0} and id=#{1}
+		</select>
+		<select id="getEndTimeGroup" parameterType="String" resultType="String">
+			select end_time FROM grade where id=#{0}
+		</select>
+	</mapper>

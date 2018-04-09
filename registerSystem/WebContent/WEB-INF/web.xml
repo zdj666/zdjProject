@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>registerSystem</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!--servletContext  -->
+  <context-param><!--表示:用来设定web站台的环境参数,spring环境下面的  -->
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring/applicationContext.xml</param-value>
+  </context-param>
+  
+  <!--用来设定Listener接口 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!--后台文件都设置为*.do样式类型的 -->
+  <servlet>
+    <servlet-name>web_controller</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc/springmvcConfig.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>web_controller</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <!--filter:是用来声明filter的相关设定  -->
+  <filter>
+    <filter-name>characterEncoding</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+   	<!--init-param:用来定义参数  -->
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  <!--filter-mapping:用来定义filter所对应的URL  -->
+  <filter-mapping>
+    <filter-name>characterEncoding</filter-name>
+    <url-pattern>*</url-pattern>
+  </filter-mapping>
+  
+  
+  
+ <!--标准配置servlet启动：  -->
+  <servlet>
+    <description></description>
+    <display-name>BaseServlet</display-name>
+    <servlet-name>BaseServlet</servlet-name>
+    <servlet-class>com.hzyc.registerSystem.tools.BaseServlet</servlet-class>
+    <load-on-startup>0</load-on-startup><!--如果这里大于等于0则，在程序加载时候自动运行该servlet,如果是下于0则在servlet被调用时候使用 -->
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaseServlet</servlet-name>
+    <url-pattern>/BaseServlet</url-pattern>
+  </servlet-mapping>
+ 
+  
+  
+  
+  <!--配置报错页面  -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error404.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/error500.jsp</location>
+  </error-page>
+  <!--在这里配置            过滤器  -->
+  <filter>
+    <display-name>LoginFilter</display-name>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.hzyc.registerSystem.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>*.jsp</url-pattern><!--当引用的参数是*.jsp或者是*.do的都可以调用  -->
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+</web-app>

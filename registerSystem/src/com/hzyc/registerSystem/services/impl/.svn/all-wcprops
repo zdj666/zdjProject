@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/sign_in/!svn/ver/1206/registerSystem/src/com/hzyc/registerSystem/services/impl
+END
+LeaveServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/sign_in/!svn/ver/1143/registerSystem/src/com/hzyc/registerSystem/services/impl/LeaveServiceImpl.java
+END
+emPowerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/sign_in/!svn/ver/1210/registerSystem/src/com/hzyc/registerSystem/services/impl/emPowerImpl.java
+END
+UpdateCalendarIfoServiceImp.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/sign_in/!svn/ver/329/registerSystem/src/com/hzyc/registerSystem/services/impl/UpdateCalendarIfoServiceImp.java
+END
+StatsServiceImple.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/sign_in/!svn/ver/981/registerSystem/src/com/hzyc/registerSystem/services/impl/StatsServiceImple.java
+END
+FilterImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/sign_in/!svn/ver/1079/registerSystem/src/com/hzyc/registerSystem/services/impl/FilterImpl.java
+END
+TimeConflictServiceImp.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/sign_in/!svn/ver/1116/registerSystem/src/com/hzyc/registerSystem/services/impl/TimeConflictServiceImp.java
+END
+DemoIfoServiceImp.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/sign_in/!svn/ver/187/registerSystem/src/com/hzyc/registerSystem/services/impl/DemoIfoServiceImp.java
+END
+WeekCalendarServiceImp.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/sign_in/!svn/ver/1004/registerSystem/src/com/hzyc/registerSystem/services/impl/WeekCalendarServiceImp.java
+END
+GetDictionaryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/sign_in/!svn/ver/673/registerSystem/src/com/hzyc/registerSystem/services/impl/GetDictionaryImpl.java
+END
+ZCManagerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/sign_in/!svn/ver/259/registerSystem/src/com/hzyc/registerSystem/services/impl/ZCManagerImpl.java
+END
+RetrievePasswordImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/sign_in/!svn/ver/250/registerSystem/src/com/hzyc/registerSystem/services/impl/RetrievePasswordImpl.java
+END
+InitServiceImp.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/sign_in/!svn/ver/474/registerSystem/src/com/hzyc/registerSystem/services/impl/InitServiceImp.java
+END
+AdminServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/sign_in/!svn/ver/1206/registerSystem/src/com/hzyc/registerSystem/services/impl/AdminServiceImpl.java
+END
+GetClassNameServiceImp.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/sign_in/!svn/ver/763/registerSystem/src/com/hzyc/registerSystem/services/impl/GetClassNameServiceImp.java
+END
+ChangeDictionaryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/sign_in/!svn/ver/1210/registerSystem/src/com/hzyc/registerSystem/services/impl/ChangeDictionaryImpl.java
+END

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzyc.registerSystem.mapper.UpdateCalendarIfoMapper" >
+ 
+  	<select id="getCalIfo" parameterType="String" resultType="RealSchedule">
+  		select * from real_schedule where user_id = #{0} and grade_id = #{1}
+  	</select>
+  
+  	<delete id="deleteCalIfo" parameterType="String">
+  		delete  from  real_schedule where user_id = #{0} and grade_id = #{1}
+  	</delete>
+	
+	<insert id="insertCalIfo" useGeneratedKeys="true"  parameterType="RealSchedule">
+		insert into real_schedule (classroom,user_id,time,grade_id,date) values 
+				(#{classroom},#{userId},#{time},#{gradeId},#{date})
+	</insert>  
+  
+  
+</mapper>

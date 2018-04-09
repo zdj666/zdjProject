@@ -1,0 +1,39 @@
+.wrapper{
+	margin-top:10px;
+	margin-left:10px;
+}
+#main-content {
+    margin-left: 210px;
+}
+.selClassNum{
+	position:absolute;
+	left:30px;
+	top:100px;
+	width:200px;
+}
+#ClassSel{
+	margin-left:105px;
+}
+.gbtn1{
+	margin-left:0px;
+}
+.lbtn{
+	margin-left:55px;
+	width:150px;
+}
+.btn1{
+	display:block;
+	margin-left:30px;
+}
+.btn2{
+	display:block;
+}
+.inputIfo{
+	display:none;
+}
+.labelH{
+	margin-top:40px;
+}
+#startIfo{
+	display:none;
+}

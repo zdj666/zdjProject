@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzyc.registerSystem.mapper.UsersMapper" >
+  <resultMap id ="BaseResultMap" type="com.hzyc.registerSystem.po.Users" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="register_time" property="registerTime" jdbcType="VARCHAR" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="mac" property="mac" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="picture_name" property="pictureName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hzyc.registerSystem.po.Users" extends="BaseResultMap" >
+    <result column="picture" property="picture" jdbcType="LONGVARBINARY" />
+  </resultMap>
+   <resultMap type="com.hzyc.registerSystem.po.Users" id="usersWithPermission">
+  	  <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="register_time" property="registerTime" jdbcType="VARCHAR" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="mac" property="mac" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="picture_name" property="pictureName" jdbcType="VARCHAR" />
+  	<!-- 
+  		一对多配置
+  		ofType指定的是多方在一方中的list的泛型 -->
+  	<collection property="pList" ofType="com.hzyc.registerSystem.po.Permission">
+  		<result column="menu_bar" property="menuBar" jdbcType="VARCHAR" />
+	    <result column="resource_path" property="resourcePath" jdbcType="VARCHAR" />
+	    <result column="menu_level" property="menuLevel" jdbcType="INTEGER" />
+	    <result column="parent_menu" property="parentMenu" jdbcType="INTEGER" />
+  	</collection>
+  	</resultMap>
+  	
+  <resultMap id="ResultMapWithBLOB" type="com.hzyc.registerSystem.po.Users" extends="usersWithPermission" >
+    <result column="picture" property="picture" jdbcType="LONGVARBINARY" />
+  </resultMap>
+    <!-- 
+  	grade与users的一对映射
+   -->
+   <resultMap id="selGradeAndUsers" type="com.hzyc.registerSystem.po.Users">
+  		  <id column="id" property="id" jdbcType="INTEGER" />
+	  	<result column="code" property="code" jdbcType="VARCHAR" />
+	    <result column="password" property="password" jdbcType="VARCHAR" />
+	    <result column="name" property="name" jdbcType="VARCHAR" />
+	    <result column="phone" property="phone" jdbcType="VARCHAR" />
+	    <result column="register_time" property="registerTime" jdbcType="VARCHAR" />
+	    <result column="question" property="question" jdbcType="VARCHAR" />
+	    <result column="answer" property="answer" jdbcType="VARCHAR" />
+	    <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+	    <result column="email" property="email" jdbcType="VARCHAR" />
+	    <result column="address" property="address" jdbcType="VARCHAR" />
+	    <result column="school" property="school" jdbcType="VARCHAR" />
+	    <result column="major" property="major" jdbcType="VARCHAR" />
+	    <result column="mac" property="mac" jdbcType="VARCHAR" /> 
+	    <result column="remark" property="remark" jdbcType="VARCHAR" />
+	    <result column="picture_name" property="pictureName" jdbcType="VARCHAR" />
+	 <collection property="gList" ofType="com.hzyc.registerSystem.po.Grade">  		
+	    <result column="gid" property="id" jdbcType="INTEGER" />
+	    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+	    <result column="class_data" property="classData" jdbcType="VARCHAR" />
+	    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+	    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+	    <result column="state" property="state" jdbcType="VARCHAR" />
+	    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+	  	
+	  
+  	</collection>
+	</resultMap>
+  <sql id="extra_list">
+  	CODE, PASSWORD, NAME, phone, register_time, question, answer, id_number, email, 
+    address, school, major, mac, grade.id as gid,grade.class_id, remark, picture_name,class_data, user_id, course_name, state,end_time
+  </sql>
+  <sql id="Base_Column_List" >
+    id, code, password, name, phone, register_time, question, answer, id_number, email, 
+    address, school, major, mac, class_id, remark, picture_name
+  </sql>
+  <sql id="Blob_Column_List" >
+    picture
+  </sql>
+  
+    <select id="queryGradeAndUsersByUserId" parameterType="Integer" resultMap="selGradeAndUsers">
+		SELECT  
+		<include refid="extra_list" ></include>
+		
+		 FROM users,grade WHERE users.id=grade.user_id AND  users.id =#{userId}
+	</select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from users
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from users
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hzyc.registerSystem.po.Users" >
+    insert into users (id, code, password, 
+      name, phone, register_time, 
+      question, answer, id_number, 
+      email, address, school, 
+      major, mac, class_id, 
+      remark, picture_name, picture
+      )
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{registerTime,jdbcType=VARCHAR}, 
+      #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{mac,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{pictureName,jdbcType=VARCHAR}, #{picture,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <!-- excel表格导入数据库 -->
+  <insert id="insertSelective" parameterType="com.hzyc.registerSystem.po.Users" >
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="registerTime != null" >
+        register_time,
+      </if>
+      <if test="question != null" >
+        question,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="idNumber != null" >
+        id_number,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="mac != null" >
+        mac,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="pictureName != null" >
+        picture_name,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null" >
+        #{registerTime,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null" >
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureName != null" >
+        #{pictureName,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzyc.registerSystem.po.Users" >
+    update users
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null" >
+        register_time = #{registerTime,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null" >
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureName != null" >
+        picture_name = #{pictureName,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hzyc.registerSystem.po.Users" >
+    update users
+    set code = #{code,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      register_time = #{registerTime,jdbcType=VARCHAR},
+      question = #{question,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      id_number = #{idNumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      picture_name = #{pictureName,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzyc.registerSystem.po.Users" >
+    update users
+    set code = #{code,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      register_time = #{registerTime,jdbcType=VARCHAR},
+      question = #{question,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      id_number = #{idNumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      picture_name = #{pictureName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="statsPTWK" resultMap="BaseResultMap">
+  		select users.id,users.code,users.name from users,role,user_role WHERE user_role.user_id = users.id AND user_role.role_id = role.id AND role_name = '项目组组员'
+  </select>
+  <select id="selectForLeave" parameterType="String" resultMap="BaseResultMap">
+  		select users.*,user_role.* from users,user_role where users.id=user_role.user_id and user_role.role_id='2' and class_id = #{classId}
+  </select>
+  
+ 
+  <select id="dimSelectForLeave" parameterType="String" resultMap="BaseResultMap">
+  		select users.*,user_role.* from users,user_role where users.id=user_role.user_id and user_role.role_id='2' and (users.code like CONCAT('%',#{dimSelect},'%') or users.name like CONCAT('%',#{dimSelect},'%') or users.school like CONCAT('%',#{dimSelect},'%') or users.phone like CONCAT('%',#{dimSelect},'%') or users.major like CONCAT('%',#{dimSelect},'%'))	
+  </select>
+  <select id="selectStuByClassDim" parameterType="Users" resultMap="BaseResultMap">
+  	select users.*,user_role.* from users,user_role where users.id=user_role.user_id and user_role.role_id='2' and class_id = #{classId} and (users.code like CONCAT('%',#{dimSelect},'%') or users.name like CONCAT('%',#{dimSelect},'%') or users.school like CONCAT('%',#{dimSelect},'%') or users.phone like CONCAT('%',#{dimSelect},'%') or users.major like CONCAT('%',#{dimSelect},'%'))
+  </select>
+  <select id="dimSelectForPro" parameterType="String" resultMap="BaseResultMap">
+  		select users.*,user_role.* from users,user_role where users.id=user_role.user_id and user_role.role_id='3' and (users.code like CONCAT('%',#{dimSelect},'%') or users.name like CONCAT('%',#{dimSelect},'%') or users.school like CONCAT('%',#{dimSelect},'%') or users.phone like CONCAT('%',#{dimSelect},'%') or users.major like CONCAT('%',#{dimSelect},'%'))	
+  </select>
+  <!-- 全查users表 -->
+  <select id="selectByCode" resultMap="BaseResultMap" parameterType="String">
+  	select * from users where code=#{code}
+  
+  </select>
+<!-- 删除 -->
+
+  <delete id="deleteById" parameterType="String" >
+    delete from users
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <select id="selStudent" resultMap="BaseResultMap" parameterType="String">
+  	select * from users where class_id = #{0} AND remark = 1
+  </select>
+  
+  <select id="login" resultMap="ResultMapWithBLOB" parameterType="com.hzyc.registerSystem.po.Users">
+  		SELECT *,<include refid="Blob_Column_List" /> FROM users,user_role,role,role_permission,permission WHERE users.id = user_role.user_id AND user_role.role_id = role.id AND role.id = role_permission.role_id AND role_permission.permission_id = permission.id
+  			and users.code = #{code} and users.password=#{password}
+  </select>
+  <!-- 查询Idnumber -->
+  
+  <select id="selectIdNumber" resultType="String" parameterType="String">
+  	select id_number from users where id_number=#{idNumber}
+  </select>
+  
+   <select id="GetupPage" parameterType="int" resultType="Users">
+  	select *from Users WHERE NAME IS NOT NULL  limit #{page},5 
+  </select>
+  
+  <select id="getPowerName" parameterType="int" resultType="Users">
+  	select *from Users where id=#{id}
+  </select>
+  <select id="selectUsersByName" parameterType="Users" resultType="Users">
+  select *from Users WHERE name LIKE CONCAT(CONCAT(#{name}), '%') || CONCAT(CONCAT('%',#{name}),'%') limit #{page},5
+  
+  </select>
+  
+  <select id="selUserId" resultMap="BaseResultMap" parameterType="String">
+  	select * from users where code=#{code}
+  </select>
+  
+  <select id="seleIdByName" parameterType="String" resultType="int">
+  
+  select id from Users where code=#{code}
+  </select>
+  
+  
+
+  <select id="selStudentNoRegister" resultMap="BaseResultMap" parameterType="String">
+  	SELECT * FROM users WHERE id NOT IN (SELECT user_id FROM user_role) AND class_id IN (SELECT grade.class_id FROM users,grade WHERE user_id = users.id and code = #{code})
+  </select>
+  
+
+  <select id="selStudentRegister" resultMap="BaseResultMap" parameterType="String">
+	  SELECT * FROM users WHERE remark = '1' AND class_id IN (SELECT grade.class_id FROM users,grade WHERE user_id = users.id and code = #{code})
+  </select>
+  
+
+  <select id="selectAllUsers" resultMap="BaseResultMap">
+  	select users.*,user_role.* from users,user_role where users.id=user_role.user_id and user_role.role_id='2' order by users.class_id
+  </select>
+
+  <select id="selBoth" resultMap="BaseResultMap">
+   	  select * from users ORDER BY  id DESC
+  </select>
+
+  
+  <update id="updateRemark" parameterType="Integer">
+  		UPDATE users SET remark = '1' WHERE id = #{id}
+  </update>
+  
+	<select id="queryStuMessageByClassId" parameterType="String" resultMap="BaseResultMap">
+		 SELECT 
+      <trim suffixOverrides="  FROM users where  class_id = #{classId}">
+         <if test="code != 'null' and code != null" >
+           code = #{code,jdbcType=VARCHAR},
+         </if>
+         <if test="name != 'null'  and  name!= null" >
+           name = #{name,jdbcType=VARCHAR},
+         </if>
+         <if test="phone != 'null' and  phone!= null" >
+           phone = #{phone,jdbcType=VARCHAR},
+         </if>
+         <if test="registerTime != 'null' and  registerTime!= null" >
+           register_time = #{registerTime,jdbcType=VARCHAR},
+         </if>
+         <if test="idNumber != 'null'  and  idNumber!= null " >
+           id_number = #{idNumber,jdbcType=VARCHAR},
+         </if>
+         <if test="email != 'null'  and  email!= null" >
+           email = #{email,jdbcType=VARCHAR},
+         </if>
+         <if test="address != 'null'  and  address!= null" >
+           address = #{address,jdbcType=VARCHAR},
+         </if>
+         <if test="school != 'null' and school!= null" >
+           school = #{school,jdbcType=VARCHAR},
+         </if>
+         <if test="major != 'null' and major != null" >
+           major = #{major,jdbcType=VARCHAR},
+         </if>
+         <if test="mac != 'null' and mac != '' " >
+           mac = #{mac,jdbcType=VARCHAR},
+         </if>
+         <if test="classId != 'null' and  classId!= null" >
+           class_id = #{classId,jdbcType=VARCHAR},
+         </if>
+        </trim>
+	</select>
+		
+		<select id="queryStuByClassId" parameterType="String" resultMap="BaseResultMap">
+			SELECT users.* FROM users,user_role WHERE users.class_id = #{classId} AND user_role.user_id = users.id AND user_role.role_id='2'
+		</select>
+		<insert id="stuExcelIn" parameterType="Users">
+			insert into users (code,name,class_id,school,major,phone,password,email,remark) values(#{code},#{name},#{classId},#{school},#{major},#{phone},#{password},#{email},'1')
+		</insert>
+		<select id="selectId" resultMap="BaseResultMap">
+			select id from users where users.id not in (select user_id from user_role)
+		</select>
+		<insert id="insertRole" parameterType="UserRole">
+			insert into user_role (user_id,role_id) values(#{userId},'2')
+		</insert>
+
+	   <select id="queryStuMessageDetail" resultMap="BaseResultMap" parameterType="String">
+	        SELECT * FROM users WHERE class_id = #{classId}
+	   </select>
+	   
+	<select id="queryStuMessageByClassID" parameterType="String" resultMap="BaseResultMap" >
+		 select * from users 
+		  <trim prefix="WHERE" prefixOverrides="AND|OR">
+		   class_id IS NOT NULL 
+		  <if test="classId != '请选择班级' ">
+           and class_id = #{classId,jdbcType=VARCHAR}
+          </if>
+          <if test="school != '请选择学校' " >
+            and school = #{school,jdbcType=VARCHAR}
+          </if>
+		 </trim>
+	</select> 
+	
+	   <select id="studentCheckForSel" parameterType="com.hzyc.registerSystem.po.Users" resultMap="BaseResultMap">
+	   		select * from users where 1=1 and remark is not null  AND class_id IS NOT null
+	   		<if test="name!=null and name != ''">
+	   			and name = #{name}
+	   		</if>
+	   		
+	   		<if test="remark!='请选择'">
+	   			and remark = #{remark}
+	   		</if>
+	   		
+	   		<if test="id!=null">
+	   			and class_id IN (SELECT class_id FROM grade WHERE user_id = #{id})
+	   		</if>
+	   		
+	   </select>
+	<select id="selEmployees" parameterType="com.hzyc.registerSystem.po.Users" resultType="com.hzyc.registerSystem.po.Users">
+		select users.* from users,user_role,role where users.id=user_role.user_id and user_role.role_id = role.id
+		<if test="name!=null and name != ''">
+			and users.name like CONCAT('%',#{name},'%')
+		</if>
+		<if test="remark!=null and remark != '' and remark!='请选择'">
+			 and role.id=#{remark}
+		</if>
+	</select>
+
+</mapper>

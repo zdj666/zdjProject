@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/sign_in/!svn/ver/1147/registerSystem/config
+END
+db.properties
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/sign_in/!svn/ver/450/registerSystem/config/db.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sign_in/!svn/ver/541/registerSystem/config/log4j.properties
+END

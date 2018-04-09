@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzyc.registerSystem.mapper.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.hzyc.registerSystem.po.Permission" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="menu_bar" property="menuBar" jdbcType="VARCHAR" />
+    <result column="resource_path" property="resourcePath" jdbcType="VARCHAR" />
+    <result column="menu_level" property="menuLevel" jdbcType="INTEGER" />
+    <result column="parent_menu" property="parentMenu" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hzyc.registerSystem.po.Permission" extends="BaseResultMap" >
+    <result column="picture_path" property="picturePath" jdbcType="BINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, menu_bar, resource_path, menu_level, parent_menu
+  </sql>
+  <sql id="Blob_Column_List" >
+    picture_path
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from permission
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from permission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hzyc.registerSystem.po.Permission" >
+    insert into permission (id, menu_bar, resource_path, 
+      menu_level, parent_menu, picture_path
+      )
+    values (#{id,jdbcType=INTEGER}, #{menuBar,jdbcType=VARCHAR}, #{resourcePath,jdbcType=VARCHAR}, 
+      #{menuLevel,jdbcType=INTEGER}, #{parentMenu,jdbcType=INTEGER}, #{picturePath,jdbcType=BINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzyc.registerSystem.po.Permission" >
+    insert into permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="menuBar != null" >
+        menu_bar,
+      </if>
+      <if test="resourcePath != null" >
+        resource_path,
+      </if>
+      <if test="menuLevel != null" >
+        menu_level,
+      </if>
+      <if test="parentMenu != null" >
+        parent_menu,
+      </if>
+      <if test="picturePath != null" >
+        picture_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="menuBar != null" >
+        #{menuBar,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcePath != null" >
+        #{resourcePath,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLevel != null" >
+        #{menuLevel,jdbcType=INTEGER},
+      </if>
+      <if test="parentMenu != null" >
+        #{parentMenu,jdbcType=INTEGER},
+      </if>
+      <if test="picturePath != null" >
+        #{picturePath,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzyc.registerSystem.po.Permission" >
+    update permission
+    <set >
+      <if test="menuBar != null" >
+        menu_bar = #{menuBar,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcePath != null" >
+        resource_path = #{resourcePath,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLevel != null" >
+        menu_level = #{menuLevel,jdbcType=INTEGER},
+      </if>
+      <if test="parentMenu != null" >
+        parent_menu = #{parentMenu,jdbcType=INTEGER},
+      </if>
+      <if test="picturePath != null" >
+        picture_path = #{picturePath,jdbcType=BINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hzyc.registerSystem.po.Permission" >
+    update permission
+    set menu_bar = #{menuBar,jdbcType=VARCHAR},
+      resource_path = #{resourcePath,jdbcType=VARCHAR},
+      menu_level = #{menuLevel,jdbcType=INTEGER},
+      parent_menu = #{parentMenu,jdbcType=INTEGER},
+      picture_path = #{picturePath,jdbcType=BINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzyc.registerSystem.po.Permission" >
+    update permission
+    set menu_bar = #{menuBar,jdbcType=VARCHAR},
+      resource_path = #{resourcePath,jdbcType=VARCHAR},
+      menu_level = #{menuLevel,jdbcType=INTEGER},
+      parent_menu = #{parentMenu,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <select id="getUser" parameterType="String" resultType="Users" >	
+			select *from Users	WHERE NAME IS NOT NULL 
+		</select>
+		
+		<select id="selectAllUsers" resultType="Users" >
+		
+			select *from Users WHERE NAME IS NOT NULL 
+		</select>
+		
+		<select id="selectAllRole" resultType="Role">
+		
+			select *from role
+		</select>
+		
+		<select id="ChaRoleForId" parameterType="String" resultType="int" >
+		
+			select id from role where roleName=#{roleName} 
+		</select>
+		
+		
+		<select id="chaAllFunHasPer"  resultMap="BaseResultMap">
+		
+		select *from Permission
+		</select>
+		
+		<select id="chaSecFunByRole" parameterType="int" resultType="String">
+		SELECT permission_id FROM role_permission  WHERE role_id=#{rid} ORDER BY permission_id asc
+		</select>
+		
+		<delete id="delByPid" parameterType="RolePermission">
+		delete from role_permission where permission_id=#{permissionId} and role_id=#{roleId}
+		</delete>
+		
+		<select id="SeleAllRoleId" resultType="RolePermission">
+		select *from role_permission
+		</select>
+  
+  		<update id="updateId" parameterType="RolePermission">
+  		update role_permission set id=#{nowId} where id=#{id}  
+  		</update>
+  	
+  		<select id="selectDelRlePerId" parameterType="RolePermission" resultType="int">
+  		select id from role_permission where permission_id=#{permissionId} and role_id=#{roleId}
+  		</select>
+  		
+  		<select id="selectCodeByName" parameterType="String" resultType="String">
+  		select code from Users where name=#{name}
+  		</select>
+  		
+  		<select id="JudgePerMissHas" parameterType="RolePermission" resultType="RolePermission">
+  		select *from role_permission where role_id=#{roleId} and permission_id=#{permissionId}
+  		</select>
+  		
+  		<select id="filterSel" resultMap="BaseResultMap" parameterType="int"> 
+  		SELECT	permission.resource_path FROM user_role,role_permission,permission WHERE user_role.user_id = #{0} AND  user_role.role_id = role_permission.role_id AND role_permission.permission_id = permission.id
+ 		</select>
+  		
+</mapper>

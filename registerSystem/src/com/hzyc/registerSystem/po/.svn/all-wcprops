@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sign_in/!svn/ver/1135/registerSystem/src/com/hzyc/registerSystem/po
+END
+RealSchedule.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/po/RealSchedule.java
+END
+Course.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/sign_in/!svn/ver/15/registerSystem/src/com/hzyc/registerSystem/po/Course.java
+END
+UserRole.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/sign_in/!svn/ver/262/registerSystem/src/com/hzyc/registerSystem/po/UserRole.java
+END
+Role.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/po/Role.java
+END
+DailyRecord.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/po/DailyRecord.java
+END
+Users.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/sign_in/!svn/ver/918/registerSystem/src/com/hzyc/registerSystem/po/Users.java
+END
+Dictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/sign_in/!svn/ver/262/registerSystem/src/com/hzyc/registerSystem/po/Dictionary.java
+END
+Class.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/sign_in/!svn/ver/403/registerSystem/src/com/hzyc/registerSystem/po/Class.java
+END
+Timetable.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/po/Timetable.java
+END
+RolePermission.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/sign_in/!svn/ver/262/registerSystem/src/com/hzyc/registerSystem/po/RolePermission.java
+END
+Page.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/sign_in/!svn/ver/537/registerSystem/src/com/hzyc/registerSystem/po/Page.java
+END
+Log.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/sign_in/!svn/ver/377/registerSystem/src/com/hzyc/registerSystem/po/Log.java
+END
+Grade.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/sign_in/!svn/ver/1135/registerSystem/src/com/hzyc/registerSystem/po/Grade.java
+END
+LeaveThing.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/sign_in/!svn/ver/32/registerSystem/src/com/hzyc/registerSystem/po/LeaveThing.java
+END
+Permission.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/sign_in/!svn/ver/262/registerSystem/src/com/hzyc/registerSystem/po/Permission.java
+END
+Signing.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/po/Signing.java
+END
+SelectSigning.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/sign_in/!svn/ver/339/registerSystem/src/com/hzyc/registerSystem/po/SelectSigning.java
+END

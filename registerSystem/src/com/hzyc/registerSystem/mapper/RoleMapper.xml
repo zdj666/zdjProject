@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzyc.registerSystem.mapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.hzyc.registerSystem.po.Role" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_intro" property="roleIntro" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, role_name, role_intro
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hzyc.registerSystem.po.Role" >
+    insert into role (id, role_name, role_intro
+      )
+    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleIntro,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzyc.registerSystem.po.Role" >
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="roleIntro != null" >
+        role_intro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleIntro != null" >
+        #{roleIntro,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzyc.registerSystem.po.Role" >
+    update role
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleIntro != null" >
+        role_intro = #{roleIntro,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzyc.registerSystem.po.Role" >
+    update role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_intro = #{roleIntro,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="ChaRoleForId" parameterType="String" resultType="int" >
+		
+			select id from role where role_name=#{id} 
+  </select>
+  	
+  	<select id="ChaIdByName" parameterType="String" resultType="int">
+  			select id from role where role_name=#{roleName} 
+  	</select>
+  	
+  	<select id="selectAllRoles" resultMap="BaseResultMap">
+		
+			select *from role 
+	</select>
+  	<insert id="addNewRole" parameterType="role">
+  	
+  		insert into role (id,role_name) values(#{id},#{roleName}); 
+  	
+  	</insert>
+  	<select id="getMaxRole" resultType="int">
+  		SELECT MAX(id) FROM role
+  	
+  	</select>
+  	
+  	<select id="getRoleName" parameterType="int" resultType="String">
+  	
+  		select role_name from role where id=#{id}
+  	</select>
+  	
+  	
+</mapper>

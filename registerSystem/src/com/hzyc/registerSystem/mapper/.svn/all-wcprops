@@ -1,0 +1,317 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/sign_in/!svn/ver/1205/registerSystem/src/com/hzyc/registerSystem/mapper
+END
+emPowerMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/mapper/emPowerMapper.xml
+END
+LogMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/sign_in/!svn/ver/445/registerSystem/src/com/hzyc/registerSystem/mapper/LogMapper.xml
+END
+CourseMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/sign_in/!svn/ver/103/registerSystem/src/com/hzyc/registerSystem/mapper/CourseMapper.java
+END
+UsersMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/sign_in/!svn/ver/1137/registerSystem/src/com/hzyc/registerSystem/mapper/UsersMapper.java
+END
+getDictionaryMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/sign_in/!svn/ver/673/registerSystem/src/com/hzyc/registerSystem/mapper/getDictionaryMapper.java
+END
+PermissionMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/sign_in/!svn/ver/1076/registerSystem/src/com/hzyc/registerSystem/mapper/PermissionMapper.xml
+END
+RolePermissionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/sign_in/!svn/ver/269/registerSystem/src/com/hzyc/registerSystem/mapper/RolePermissionMapper.java
+END
+UpdateCalendarIfoMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/sign_in/!svn/ver/186/registerSystem/src/com/hzyc/registerSystem/mapper/UpdateCalendarIfoMapper.java
+END
+CourseMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/sign_in/!svn/ver/103/registerSystem/src/com/hzyc/registerSystem/mapper/CourseMapper.xml
+END
+RoleMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/sign_in/!svn/ver/1209/registerSystem/src/com/hzyc/registerSystem/mapper/RoleMapper.xml
+END
+StuMessageMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/sign_in/!svn/ver/886/registerSystem/src/com/hzyc/registerSystem/mapper/StuMessageMapper.java
+END
+DailyRecordMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/mapper/DailyRecordMapper.xml
+END
+TimeConflictMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/sign_in/!svn/ver/1116/registerSystem/src/com/hzyc/registerSystem/mapper/TimeConflictMapper.java
+END
+LogMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/sign_in/!svn/ver/445/registerSystem/src/com/hzyc/registerSystem/mapper/LogMapper.java
+END
+GradeMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/sign_in/!svn/ver/1135/registerSystem/src/com/hzyc/registerSystem/mapper/GradeMapper.java
+END
+DemoIfoMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/sign_in/!svn/ver/186/registerSystem/src/com/hzyc/registerSystem/mapper/DemoIfoMapper.java
+END
+ClassMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/sign_in/!svn/ver/508/registerSystem/src/com/hzyc/registerSystem/mapper/ClassMapper.xml
+END
+DictionaryMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/sign_in/!svn/ver/1209/registerSystem/src/com/hzyc/registerSystem/mapper/DictionaryMapper.xml
+END
+LeaveThingMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/sign_in/!svn/ver/1137/registerSystem/src/com/hzyc/registerSystem/mapper/LeaveThingMapper.java
+END
+ZCManagerMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/sign_in/!svn/ver/273/registerSystem/src/com/hzyc/registerSystem/mapper/ZCManagerMapper.xml
+END
+UpdateCalendarIfoMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/sign_in/!svn/ver/186/registerSystem/src/com/hzyc/registerSystem/mapper/UpdateCalendarIfoMapper.xml
+END
+RolePermissionMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/sign_in/!svn/ver/271/registerSystem/src/com/hzyc/registerSystem/mapper/RolePermissionMapper.xml
+END
+TeacherMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/sign_in/!svn/ver/327/registerSystem/src/com/hzyc/registerSystem/mapper/TeacherMapper.xml
+END
+SigningMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/sign_in/!svn/ver/1143/registerSystem/src/com/hzyc/registerSystem/mapper/SigningMapper.java
+END
+TimeConflictMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/sign_in/!svn/ver/1116/registerSystem/src/com/hzyc/registerSystem/mapper/TimeConflictMapper.xml
+END
+StuMessageMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/sign_in/!svn/ver/1014/registerSystem/src/com/hzyc/registerSystem/mapper/StuMessageMapper.xml
+END
+RealScheduleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/sign_in/!svn/ver/161/registerSystem/src/com/hzyc/registerSystem/mapper/RealScheduleMapper.java
+END
+UserRoleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/sign_in/!svn/ver/1191/registerSystem/src/com/hzyc/registerSystem/mapper/UserRoleMapper.java
+END
+DemoIfoMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/sign_in/!svn/ver/186/registerSystem/src/com/hzyc/registerSystem/mapper/DemoIfoMapper.xml
+END
+GradeMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/sign_in/!svn/ver/1189/registerSystem/src/com/hzyc/registerSystem/mapper/GradeMapper.xml
+END
+RoleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/sign_in/!svn/ver/1209/registerSystem/src/com/hzyc/registerSystem/mapper/RoleMapper.java
+END
+DailyRecordMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/mapper/DailyRecordMapper.java
+END
+WeekCalendarMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/sign_in/!svn/ver/1006/registerSystem/src/com/hzyc/registerSystem/mapper/WeekCalendarMapper.xml
+END
+DictionaryMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/sign_in/!svn/ver/1209/registerSystem/src/com/hzyc/registerSystem/mapper/DictionaryMapper.java
+END
+ClassMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/sign_in/!svn/ver/458/registerSystem/src/com/hzyc/registerSystem/mapper/ClassMapper.java
+END
+LeaveThingMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/sign_in/!svn/ver/1137/registerSystem/src/com/hzyc/registerSystem/mapper/LeaveThingMapper.xml
+END
+TimetableMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/mapper/TimetableMapper.java
+END
+GetClassNameMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/sign_in/!svn/ver/763/registerSystem/src/com/hzyc/registerSystem/mapper/GetClassNameMapper.java
+END
+ZCManagerMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/mapper/ZCManagerMapper.java
+END
+RetrievePasswordMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/sign_in/!svn/ver/249/registerSystem/src/com/hzyc/registerSystem/mapper/RetrievePasswordMapper.java
+END
+TeacherMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/sign_in/!svn/ver/325/registerSystem/src/com/hzyc/registerSystem/mapper/TeacherMapper.java
+END
+SigningMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/sign_in/!svn/ver/1143/registerSystem/src/com/hzyc/registerSystem/mapper/SigningMapper.xml
+END
+emPowerMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/mapper/emPowerMapper.java
+END
+UserRoleMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/sign_in/!svn/ver/1190/registerSystem/src/com/hzyc/registerSystem/mapper/UserRoleMapper.xml
+END
+RealScheduleMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/sign_in/!svn/ver/492/registerSystem/src/com/hzyc/registerSystem/mapper/RealScheduleMapper.xml
+END
+UsersMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/sign_in/!svn/ver/1205/registerSystem/src/com/hzyc/registerSystem/mapper/UsersMapper.xml
+END
+getDictionaryMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/sign_in/!svn/ver/673/registerSystem/src/com/hzyc/registerSystem/mapper/getDictionaryMapper.xml
+END
+WeekCalendarMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/sign_in/!svn/ver/1006/registerSystem/src/com/hzyc/registerSystem/mapper/WeekCalendarMapper.java
+END
+TimetableMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/sign_in/!svn/ver/14/registerSystem/src/com/hzyc/registerSystem/mapper/TimetableMapper.xml
+END
+GetClassNameMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/sign_in/!svn/ver/763/registerSystem/src/com/hzyc/registerSystem/mapper/GetClassNameMapper.xml
+END
+RetrievePasswordMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/sign_in/!svn/ver/249/registerSystem/src/com/hzyc/registerSystem/mapper/RetrievePasswordMapper.xml
+END
+PermissionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/sign_in/!svn/ver/1049/registerSystem/src/com/hzyc/registerSystem/mapper/PermissionMapper.java
+END

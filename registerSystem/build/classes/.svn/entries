@@ -2,14 +2,14 @@
 
 dir
 1207
-https://192.168.1.250/svn/sign_in/registerSystem/build/classes
+https://192.168.1.250/svn/sign_in/registerSystem/src
 https://192.168.1.250/svn/sign_in
 
 
 
-2017-11-09T09:40:31.296101Z
-14
-zhangdejun
+2017-12-15T07:41:39.713851Z
+1207
+marongfu
 
 
 
@@ -26,71 +26,6 @@ zhangdejun
 
 4588abf8-b46b-4f40-b733-ac443ad9468f
 
-db.properties
-file
-
-
-
-
-2017-11-24T01:25:10.411923Z
-ad9ecafcee7d0d96eb1a4a0c7992eb1c
-2017-11-09T09:40:31.296101Z
-14
-zhangdejun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-128
-
-log4j.properties
-file
-
-
-
-
-2017-11-24T01:25:10.425924Z
-2a1ee1f6f6019a9706ea876d775273ae
-2017-11-09T09:40:31.296101Z
-14
-zhangdejun
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-264
+com
+dir
 
